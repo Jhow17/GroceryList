@@ -6,7 +6,7 @@ import cors from 'cors';
 
 const app = express()
 const prisma = new PrismaClient()
-const port = 3000
+
 
 app.use(express.json())
 app.use(cors())
@@ -67,7 +67,9 @@ app.delete('/itens/:id', async(req, res) =>{
      res.status(200).json({message: 'Usuario deletado'})
 })
 
-app.listen(port, '192.168.0.18', () => {
-  console.log(`Servidor rodando na porta ${port}`)
-})
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
+});
 
